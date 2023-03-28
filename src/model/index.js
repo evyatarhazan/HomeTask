@@ -5,6 +5,7 @@ import Navbar from "./navbar";
 
 
 const Index = () => {
+    const [data, setData] = useState([])
     const [users, setUsers] = useState([])
     const [isReady, setIsReady] = useState(false)
 
@@ -27,16 +28,22 @@ const Index = () => {
         setUsers([...users, user])
     }
 
+    const filterUsers = (users) => {
+        console.log('sdsdsdadada')
+        setUsers(users)
+    }
+
 
     useEffect(() => {
         let data_ = getAll()
         console.log(data_)
+        setData(data_)
         setUsers(data_)
         setIsReady(true)
     }, [])
     return (
         <div>
-            <Navbar addUser={addUser}/>
+            <Navbar addUser={addUser} data={data} filterUsers={filterUsers}/>
             <table style={{ tableLayout: "auto" }}>
                 <tr>
                     <th>Name</th>
