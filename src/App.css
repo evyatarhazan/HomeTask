@@ -1,3 +1,6 @@
+@import url(./styles/table.css);
+@import url(./styles/modal.css);
+
 .App {
   text-align: center;
 }
