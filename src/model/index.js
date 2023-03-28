@@ -29,7 +29,6 @@ const Index = () => {
     }
 
     const filterUsers = (users) => {
-        console.log('sdsdsdadada')
         setUsers(users)
     }
 
