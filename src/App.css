@@ -1,5 +1,6 @@
 @import url(./styles/table.css);
 @import url(./styles/modal.css);
+@import url(./styles/miniNavbar.css);
 
 .App {
   text-align: center;

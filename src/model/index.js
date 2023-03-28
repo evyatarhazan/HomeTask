@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import getAll from '../service/base_service';
 import Modal from './modal'
+import Navbar from "./navbar";
 
 
 const Index = () => {
@@ -22,6 +23,10 @@ const Index = () => {
         setShowDelete(true)
     }
 
+    const addUser = (user) => {
+        setUsers([...users, user])
+    }
+
 
     useEffect(() => {
         let data_ = getAll()
@@ -31,7 +36,7 @@ const Index = () => {
     }, [])
     return (
         <div>
-            'cdvdvdvd'
+            <Navbar addUser={addUser}/>
             <table style={{ tableLayout: "auto" }}>
                 <tr>
                     <th>Name</th>
@@ -49,8 +54,8 @@ const Index = () => {
                                 <td>{user.ip}</td>
                                 <td>{user.phone}</td>
                                 <td>
-                                    <button>update</button>
-                                    <button id="myBtn" onClick={() => modalDelete(user)}>
+                                    {/* <button>update</button> */}
+                                    <button onClick={() => modalDelete(user)}>
                                         <img src="https://img.icons8.com/material/30/ab5e2a/filled-trash.png" />
                                     </button>
                                 </td>
@@ -60,18 +65,18 @@ const Index = () => {
                 }
             </table>
             <Modal show={showDelete}>
-            <div id="MenusDelete" class="Rmodal">
+                <div id="MenusDelete" class="Rmodal">
 
-                <div class="modal-content">
-                    <h2></h2>
-                    <p>Are you sure you want to delete {user.name}?</p>
-                    <div class="icons">
-                        <button class="close" onClick={() => setShowDelete(false)}>cancel</button>
-                        <button class="close" onClick={() => userDelete(user.id)}>delete</button>
+                    <div class="modal-content">
+                        <h2></h2>
+                        <p>Are you sure you want to delete {user.name}?</p>
+                        <div class="icons">
+                            <button class="close" onClick={() => setShowDelete(false)}>cancel</button>
+                            <button class="close" onClick={() => userDelete(user.id)}>delete</button>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </Modal>
+            </Modal>
         </div>
     )
 }
