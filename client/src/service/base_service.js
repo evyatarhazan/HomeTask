@@ -2,6 +2,7 @@ import axios from 'axios';
 
 const HTTP = `http://127.0.0.1:5000/api/v1/users`
 
+
 export const getAllUsers = async () => {
     try {
         const response = await axios.get(HTTP)
