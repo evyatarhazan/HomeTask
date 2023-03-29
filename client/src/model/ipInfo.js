@@ -6,7 +6,7 @@ const IpInfo = (props) => {
     const setShowIpInfo = props.setShowIpInfo
     
     return (
-        <div id="MenusAdd" class="Rmodal">
+        <div id="ipInfo" class="Rmodal">
             <div class="modal-content">
                 <h2>ip info</h2>
                 {isReadyIp &&
@@ -76,3 +76,4 @@ const IpInfo = (props) => {
 }
 
 export default IpInfo
+
