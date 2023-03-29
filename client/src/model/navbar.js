@@ -32,6 +32,7 @@ const Navbar = (props) => {
                             type="text"
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
+                            // onChange={(e) => [setSearchTerm(e.target.value), Search(props.data, props.filterUsers, searchTerm, filter, setErrorSearch)]}
                         />
                         <button onClick={() => Search(props.data, props.filterUsers, searchTerm, filter, setErrorSearch)}>Search</button>
                         {errorSearch}

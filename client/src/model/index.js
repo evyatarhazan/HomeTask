@@ -14,7 +14,6 @@ const Index = () => {
     const [showDelete, setShowDelete] = useState(false);
 
     const userDelete = (props) => {
-        //TODO server delete
         deleteUser(props)
         let newData = users.filter(user => user.id !== props)
         setUsers(newData);

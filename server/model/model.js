@@ -2,7 +2,6 @@ import { findAll, deleteById, create } from './conllers.js';
 import {validateName, isValidIsraeliID, validateIPAddress, validatePhoneNumber} from './validator.js'
 
 export const postDataUsers = (req, res) => {
-    console.log(req)
     let validName = validateName(req.body.name)
     let validID = isValidIsraeliID(req.body.id)
     let validIP = validateIPAddress(req.body.ip)
@@ -41,6 +40,7 @@ export const getAllUsers = (req, res) => {
         })
         .catch((error) => {
             console.log(error);
+            res.send(error);
         });
 }
 
