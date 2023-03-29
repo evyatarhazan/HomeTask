@@ -34,3 +34,4 @@ export const validatePhoneNumber = (phoneNumber) => {
   return re.test(input_str) ? true : `${phoneNumber} is invalid phone number`;
 };
 
+
