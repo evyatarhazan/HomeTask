@@ -31,7 +31,7 @@ export const validateIPAddress = (ip) => {
 
 export const validatePhoneNumber = (phoneNumber) => {
   const re = /^(?:\+972|972|0)(?:-)?(?:[23489]|5[023458]|77|81)(?:-)?(?:\d{7})$/;
-  return re.test(input_str) ? true : `${phoneNumber} is invalid phone number`;
+  return re.test(phoneNumber) ? true : `${phoneNumber} is invalid phone number`;
 };
 
 

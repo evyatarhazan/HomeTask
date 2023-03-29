@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import {isValidIsraeliID, validatePhoneNumber, validateName, validateIPAddress} from './validator'
+import { addUser } from '../service/base_service';
 
 
 const AddUserForm = (props) => {
@@ -49,6 +50,7 @@ const AddUserForm = (props) => {
             let user = {
                 'name': name, 'id': id, 'ip': ip, 'phone': phone
             }
+            addUser(user)
             props.addUser(user)
             props.setAdd(false)
             console.log('Added successfully', user)

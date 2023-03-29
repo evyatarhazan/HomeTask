@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import getAll from '../service/base_service';
+import { getAllUsers, deleteUser } from '../service/base_service';
 import Modal from './modal'
 import Navbar from "./navbar";
 
 
 const Index = () => {
+
     const [data, setData] = useState([])
     const [users, setUsers] = useState([])
     const [isReady, setIsReady] = useState(false)
@@ -14,6 +15,7 @@ const Index = () => {
 
     const userDelete = (props) => {
         //TODO server delete
+        deleteUser(props)
         let newData = users.filter(user => user.id !== props)
         setUsers(newData);
         setShowDelete(false)
@@ -32,17 +34,22 @@ const Index = () => {
         setUsers(users)
     }
 
-
+  
     useEffect(() => {
-        let data_ = getAll()
-        console.log(data_)
-        setData(data_)
-        setUsers(data_)
-        setIsReady(true)
+        const newData = (async () => {
+            const response = await getAllUsers()
+            setData(response);
+            setUsers(response);
+            setIsReady(true);
+        })
+        newData()
+
     }, [])
+
+
     return (
         <div>
-            <Navbar addUser={addUser} data={data} filterUsers={filterUsers}/>
+            <Navbar addUser={addUser} data={data} filterUsers={filterUsers} />
             <table style={{ tableLayout: "auto" }}>
                 <tr>
                     <th>Name</th>
