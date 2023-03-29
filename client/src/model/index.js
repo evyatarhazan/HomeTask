@@ -82,7 +82,7 @@ const Index = () => {
                             <tr key={i}>
                                 <td>{user.name}</td>
                                 <td>{user.id}</td>
-                                <td onClick={() => [setIpAddress(user.ip), setShowIpInfo(true)]}>
+                                <td class="miniNavbarButton" onClick={() => [setIpAddress(user.ip), setShowIpInfo(true)]}>
                                     {user.ip}
                                 </td>
                                 <td>{user.phone}</td>

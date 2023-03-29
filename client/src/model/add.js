@@ -64,10 +64,11 @@ const AddUserForm = (props) => {
     return (
         <div id="MenusEdit" class="Rmodal">
             <div class="modal-content">
+                <h2>add User</h2>
                 <table >
                     <tr>
-                        <td>Name</td>
-                        <td>
+                        <td class="td">Name</td>
+                        <td class="td">
                             <input
                                 type="text"
                                 id="name"
@@ -78,8 +79,8 @@ const AddUserForm = (props) => {
                         </td>
                     </tr>
                     <tr>
-                        <td>ID</td>
-                        <td>
+                        <td class="td">ID</td>
+                        <td class="td" >
                             <input
                                 type="number"
                                 id="id"
@@ -90,8 +91,8 @@ const AddUserForm = (props) => {
                         </td>
                     </tr>
                     <tr>
-                        <td>IP</td>
-                        <td>
+                        <td class="td">IP</td>
+                        <td class="td">
                             <input
                                 type="text"
                                 id="ip"
@@ -102,8 +103,8 @@ const AddUserForm = (props) => {
                         </td>
                     </tr>
                     <tr>
-                        <td>Phone</td>
-                        <td>
+                        <td class="td">Phone</td>
+                        <td class="td">
                             <input
                                 type="text"
                                 id="phone"

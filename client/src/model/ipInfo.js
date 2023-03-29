@@ -12,60 +12,60 @@ const IpInfo = (props) => {
                 {isReadyIp &&
                     <table >
                         <tr>
-                            <td>As</td>
-                            <td>{dataIP.as}</td>
+                            <td class="td">As</td>
+                            <td class="td">{dataIP.as}</td>
                         </tr>
                         <tr>
-                            <td>City</td>
-                            <td>{dataIP.city}</td>
+                            <td class="td">City</td>
+                            <td class="td">{dataIP.city}</td>
                         </tr>
                         <tr>
-                            <td>Country</td>
-                            <td>{dataIP.country}</td>
+                            <td class="td">Country</td>
+                            <td class="td">{dataIP.country}</td>
                         </tr>
                         <tr>
-                            <td>CountryCode</td>
-                            <td>{dataIP.countryCode}</td>
+                            <td class="td">CountryCode</td>
+                            <td class="td">{dataIP.countryCode}</td>
                         </tr>
                         <tr>
-                            <td>Isp</td>
-                            <td>{dataIP.isp}</td>
+                            <td class="td">Isp</td>
+                            <td class="td">{dataIP.isp}</td>
                         </tr>
                         <tr>
-                            <td>Lat</td>
-                            <td>{dataIP.lat}</td>
+                            <td class="td">Lat</td>
+                            <td class="td">{dataIP.lat}</td>
                         </tr>
                         <tr>
-                            <td>Lon</td>
-                            <td>{dataIP.lon}</td>
+                            <td class="td">Lon</td>
+                            <td class="td">{dataIP.lon}</td>
                         </tr>
                         <tr>
-                            <td>Org</td>
-                            <td>{dataIP.org}</td>
+                            <td class="td">Org</td>
+                            <td class="td">{dataIP.org}</td>
                         </tr>
                         <tr>
-                            <td>Query</td>
-                            <td>{dataIP.query}</td>
+                            <td class="td">Query</td>
+                            <td class="td">{dataIP.query}</td>
                         </tr>
                         <tr>
-                            <td>Region</td>
-                            <td>{dataIP.region}</td>
+                            <td class="td">Region</td>
+                            <td class="td">{dataIP.region}</td>
                         </tr>
                         <tr>
-                            <td>RegionName</td>
-                            <td>{dataIP.regionName}</td>
+                            <td class="td">RegionName</td>
+                            <td class="td">{dataIP.regionName}</td>
                         </tr>
                         <tr>
-                            <td>Status</td>
-                            <td>{dataIP.status}</td>
+                            <td class="td">Status</td>
+                            <td class="td">{dataIP.status}</td>
                         </tr>
                         <tr>
-                            <td>Timezone</td>
-                            <td>{dataIP.timezone}</td>
+                            <td class="td">Timezone</td>
+                            <td class="td">{dataIP.timezone}</td>
                         </tr>
                         <tr>
-                            <td>Zip</td>
-                            <td>{dataIP.zip}</td>
+                            <td class="td">Zip</td>
+                            <td class="td">{dataIP.zip}</td>
                         </tr>
                     </table >
                 }

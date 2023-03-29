@@ -18,7 +18,6 @@ const Navbar = (props) => {
         <>
             <div class="mini">
                 <div class="miniNavbarRight">
-                    <div class="miniNavbarButton" onClick={() => setAdd(true)}>add user</div>
                 </div>
                 <div class="miniNavbarLeft">
                     <div class="miniNavbarButton">
@@ -32,11 +31,16 @@ const Navbar = (props) => {
                             type="text"
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
-                            // onChange={(e) => [setSearchTerm(e.target.value), Search(props.data, props.filterUsers, searchTerm, filter, setErrorSearch)]}
+                        // onChange={(e) => [setSearchTerm(e.target.value), Search(props.data, props.filterUsers, searchTerm, filter, setErrorSearch)]}
                         />
-                        <button onClick={() => Search(props.data, props.filterUsers, searchTerm, filter, setErrorSearch)}>Search</button>
+                        <button onClick={() => Search(props.data, props.filterUsers, searchTerm, filter, setErrorSearch)}>
+                            <img src="https://img.icons8.com/15/ab5e2a/search"></img>
+                        </button>
                         {errorSearch}
                     </div>
+                    <button onClick={() => setAdd(true)}>
+                    <img src="https://img.icons8.com/ios-filled/25/ab5e2a/add-user-male.png"></img>
+                    </button>
                 </div>
             </div>
             <Modal show={Add}>
