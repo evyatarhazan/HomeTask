@@ -18,7 +18,7 @@ const Navbar = (props) => {
         <>
             <div class="mini">
                 <div class="miniNavbarRight">
-                    <button onClick={() => setAdd(true)}>add user</button>
+                    <div class="miniNavbarButton" onClick={() => setAdd(true)}>add user</div>
                 </div>
                 <div class="miniNavbarLeft">
                     <div class="miniNavbarButton">

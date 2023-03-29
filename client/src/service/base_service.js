@@ -13,6 +13,7 @@ export const getAllUsers = async () => {
     }
 }
 
+
 export const deleteUser = async (id) => {
     try {
         const respons = await axios.delete(`${HTTP}/${id}`)
@@ -32,3 +33,15 @@ export const addUser = async (user) => {
         console.log(error)
     }
 }
+
+export const getIpInfo = async (IP) => {
+    try {
+      const response = await axios.get(`http://ip-api.com/json/${IP}`);
+      const data = await response.data;
+      console.log(`info >> get ip info successfully ${data}`)
+      return data;
+
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };

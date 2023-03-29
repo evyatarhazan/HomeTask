@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
-import { getAllUsers, deleteUser } from '../service/base_service';
-import Modal from './modal'
+import { getAllUsers, deleteUser, getIpInfo } from '../service/base_service';
+import IpInfo from "./ipInfo";
+// import IpInfo from "./ipInfo";
+import Modal from './modal';
 import Navbar from "./navbar";
 
 
@@ -10,8 +12,13 @@ const Index = () => {
     const [users, setUsers] = useState([])
     const [isReady, setIsReady] = useState(false)
 
-    const [user, setUser] = useState([])
+    const [user, setUser] = useState([]);
     const [showDelete, setShowDelete] = useState(false);
+    const [showIpInfo, setShowIpInfo] = useState(false);
+    const [ipAddress, setIpAddress] = useState('')
+
+    const [dataIP, setDataIP] = useState([])
+    const [isReadyIp, setIsReadyIp] = useState(false)
 
     const userDelete = (props) => {
         deleteUser(props)
@@ -33,7 +40,19 @@ const Index = () => {
         setUsers(users)
     }
 
-  
+    useEffect(() => {
+        const ipData = (async (ipAddress) => {
+            const response = await getIpInfo(ipAddress)
+            setDataIP(response);
+            setIsReadyIp(true);
+            console.log(response)
+            console.log(dataIP)
+            return response
+        })
+        ipData(ipAddress)
+    }, [ipAddress])
+
+
     useEffect(() => {
         const newData = (async () => {
             const response = await getAllUsers()
@@ -63,7 +82,9 @@ const Index = () => {
                             <tr key={i}>
                                 <td>{user.name}</td>
                                 <td>{user.id}</td>
-                                <td>{user.ip}</td>
+                                <td onClick={() => [setIpAddress(user.ip), setShowIpInfo(true)]}>
+                                    {user.ip}
+                                </td>
                                 <td>{user.phone}</td>
                                 <td>
                                     {/* <button>update</button> */}
@@ -78,7 +99,6 @@ const Index = () => {
             </table>
             <Modal show={showDelete}>
                 <div id="MenusDelete" class="Rmodal">
-
                     <div class="modal-content">
                         <h2></h2>
                         <p>Are you sure you want to delete {user.name}?</p>
@@ -88,6 +108,9 @@ const Index = () => {
                         </div>
                     </div>
                 </div>
+            </Modal>
+            <Modal show={showIpInfo}>
+                <IpInfo isReadyIp={isReadyIp} dataIP={dataIP} setShowIpInfo={setShowIpInfo}/>
             </Modal>
         </div>
     )
