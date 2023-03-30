@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
-import getAllMocServer from "../mocServer/BD";
 import { getAllUsers, deleteUser, getIpInfo } from '../service/base_service';
 import IpInfo from "./ipInfo";
-// import IpInfo from "./ipInfo";
 import Modal from './modal';
 import Navbar from "./navbar";
 
@@ -81,14 +79,14 @@ const Index = () => {
                             <tr key={i}>
                                 <td>{user.name}</td>
                                 <td>{user.id}</td>
-                                <td class="miniNavbarButton" onClick={() => [setIpAddress(user.ip), setShowIpInfo(true)]}>
+                                <td className="miniNavbarButton" onClick={() => [setIpAddress(user.ip), setShowIpInfo(true)]}>
                                     {user.ip}
                                 </td>
                                 <td>{user.phone}</td>
                                 <td>
                                     {/* <button>update</button> */}
                                     <button onClick={() => modalDelete(user)}>
-                                        <img src="https://img.icons8.com/material/30/ab5e2a/filled-trash.png" />
+                                        <img src="https://img.icons8.com/material/30/ab5e2a/filled-trash.png" alt=""/>
                                     </button>
                                 </td>
                             </tr>
@@ -97,13 +95,12 @@ const Index = () => {
                 }
             </table>
             <Modal show={showDelete}>
-                <div id="MenusDelete" class="Rmodal">
-                    <div class="modal-content">
-                        <h2></h2>
+                <div id="MenusDelete" className="Rmodal">
+                    <div className="modal-content">
                         <p>Are you sure you want to delete {user.name}?</p>
-                        <div class="icons">
-                            <button class="close" onClick={() => setShowDelete(false)}>cancel</button>
-                            <button class="close" onClick={() => userDelete(user.id)}>delete</button>
+                        <div className="icons">
+                            <button className="close" onClick={() => setShowDelete(false)}>cancel</button>
+                            <button className="close" onClick={() => userDelete(user.id)}>delete</button>
                         </div>
                     </div>
                 </div>

@@ -16,12 +16,12 @@ const Navbar = (props) => {
 
     return (
         <>
-            <div class="mini">
-                <div class="miniNavbarRight">
+            <div className="mini">
+                <div className="miniNavbarRight">
                 </div>
-                <div class="miniNavbarLeft">
-                    <div class="miniNavbarButton">
-                        <select class="form-control" aria-label="Default select example" onChange={handleChange} name="category">
+                <div className="miniNavbarLeft">
+                    <div className="miniNavbarButton">
+                        <select className="form-control" aria-label="Default select example" onChange={handleChange} name="category">
                             <option value="name">Name</option>
                             <option value="id">ID</option>
                             <option value="ip">IP</option>
@@ -34,18 +34,18 @@ const Navbar = (props) => {
                         // onChange={(e) => [setSearchTerm(e.target.value), Search(props.data, props.filterUsers, searchTerm, filter, setErrorSearch)]}
                         />
                         <button onClick={() => Search(props.data, props.filterUsers, searchTerm, filter, setErrorSearch)}>
-                            <img src="https://img.icons8.com/15/ab5e2a/search"></img>
+                            <img src="https://img.icons8.com/15/ab5e2a/search" alt=""/>
                         </button>
                         {errorSearch}
                     </div>
                     <button onClick={() => setAdd(true)}>
-                    <img src="https://img.icons8.com/ios-filled/25/ab5e2a/add-user-male.png"></img>
+                    <img src="https://img.icons8.com/ios-filled/25/ab5e2a/add-user-male.png" alt=""/>
                     </button>
                 </div>
             </div>
             <Modal show={Add}>
-                <div id="MenusAdd" class="Rmodal">
-                    <div class="modal-content">
+                <div id="MenusAdd" className="Rmodal">
+                    <div className="modal-content">
                         <AddUserForm setAdd={setAdd} addUser={props.addUser} />
                     </div>
                 </div>

@@ -21,6 +21,7 @@ export const deleteUser = async (id) => {
     }
 }
 
+
 export const addUser = async (user) => {
     try {
         const respons = await axios.post(`${process.env.REACT_APP_HTTP}${process.env.REACT_APP_LOCALHOST}:${process.env.REACT_APP_PORT}${process.env.REACT_APP_API}`, user)
@@ -29,6 +30,7 @@ export const addUser = async (user) => {
         console.error(error)
     }
 }
+
 
 export const getIpInfo = async (IP) => {
     try {

@@ -1,5 +1,5 @@
 const Search = (data, filterUsers, search, filterCategory, setErrorSearch) => {
-    if (search == '') {
+    if (search === '') {
         filterUsers(data)
     }
     else {

@@ -50,7 +50,7 @@ const AddUserForm = (props) => {
             }
 
             const newUser = (async (user) => {
-                const response = await addUser(user)
+                await addUser(user)
                 props.addUser(user)
                 props.setAdd(false)
             })
@@ -59,13 +59,13 @@ const AddUserForm = (props) => {
     }
 
     return (
-        <div id="MenusEdit" class="Rmodal">
-            <div class="modal-content">
+        <div id="MenusEdit" className="Rmodal">
+            <div className="modal-content">
                 <h2>add User</h2>
                 <table >
                     <tr>
-                        <td class="td">Name</td>
-                        <td class="td">
+                        <td>Name</td>
+                        <td>
                             <input
                                 type="text"
                                 id="name"
@@ -76,8 +76,8 @@ const AddUserForm = (props) => {
                         </td>
                     </tr>
                     <tr>
-                        <td class="td">ID</td>
-                        <td class="td" >
+                        <td>ID</td>
+                        <td >
                             <input
                                 type="number"
                                 id="id"
@@ -88,8 +88,8 @@ const AddUserForm = (props) => {
                         </td>
                     </tr>
                     <tr>
-                        <td class="td">IP</td>
-                        <td class="td">
+                        <td>IP</td>
+                        <td>
                             <input
                                 type="text"
                                 id="ip"
@@ -100,8 +100,8 @@ const AddUserForm = (props) => {
                         </td>
                     </tr>
                     <tr>
-                        <td class="td">Phone</td>
-                        <td class="td">
+                        <td>Phone</td>
+                        <td>
                             <input
                                 type="text"
                                 id="phone"
@@ -114,9 +114,9 @@ const AddUserForm = (props) => {
                 </table>
                 <h2>{errorValid}</h2>
                 <div>
-                    <div class="icons">
-                        <button class="close" onClick={() => onSubmit()}>Add</button>
-                        <button class="close" onClick={() => props.setAdd(false)}>cancel</button>
+                    <div className="icons">
+                        <button className="close" onClick={() => onSubmit()}>Add</button>
+                        <button className="close" onClick={() => props.setAdd(false)}>cancel</button>
                     </div>
                 </div>
             </div>
