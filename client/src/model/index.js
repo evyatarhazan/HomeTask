@@ -84,7 +84,6 @@ const Index = () => {
                                 </td>
                                 <td>{user.phone}</td>
                                 <td>
-                                    {/* <button>update</button> */}
                                     <button onClick={() => modalDelete(user)}>
                                         <img src="https://img.icons8.com/material/30/ab5e2a/filled-trash.png" alt=""/>
                                     </button>
