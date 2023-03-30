@@ -1,14 +1,9 @@
 import axios from 'axios';
 
-const HTTP = `http://`
-const LOCALHOST = `127.0.0.1`
-const API = `/api/v1/users`
-const PORT = 5000
-
 
 export const getAllUsers = async () => {
     try {
-        const response = await axios.get(`${HTTP}${LOCALHOST}:${PORT}${API}`)
+        const response = await axios.get(`${process.env.REACT_APP_HTTP}${process.env.REACT_APP_LOCALHOST}:${process.env.REACT_APP_PORT}${process.env.REACT_APP_API}`)
         const data = await response.data
         return data
     } catch (error) {
@@ -19,7 +14,7 @@ export const getAllUsers = async () => {
 
 export const deleteUser = async (id) => {
     try {
-        const respons = await axios.delete(`${HTTP}${LOCALHOST}:${PORT}${API}/${id}`)
+        const respons = await axios.delete(`${process.env.REACT_APP_HTTP}${process.env.REACT_APP_LOCALHOST}:${process.env.REACT_APP_PORT}${process.env.REACT_APP_API}/${id}`)
         return respons.data.message
     } catch (error) {
         console.error(error)
@@ -28,7 +23,7 @@ export const deleteUser = async (id) => {
 
 export const addUser = async (user) => {
     try {
-        const respons = await axios.post(`${HTTP}${LOCALHOST}:${PORT}${API}`, user)
+        const respons = await axios.post(`${process.env.REACT_APP_HTTP}${process.env.REACT_APP_LOCALHOST}:${process.env.REACT_APP_PORT}${process.env.REACT_APP_API}`, user)
         return respons
     } catch (error) {
         console.error(error)
@@ -37,11 +32,11 @@ export const addUser = async (user) => {
 
 export const getIpInfo = async (IP) => {
     try {
-      const response = await axios.get(`http://ip-api.com/json/${IP}`);
-      const data = await response.data;
-      return data;
+        const response = await axios.get(`http://ip-api.com/json/${IP}`);
+        const data = await response.data;
+        return data;
 
     } catch (error) {
-      console.error("Error:", error);
+        console.error("Error:", error);
     }
-  };
+};
