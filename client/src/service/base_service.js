@@ -7,7 +7,7 @@ export const getAllUsers = async () => {
     try {
         const response = await axios.get(HTTP)
         const data = await response.data
-        console.log(`info >> get user list successfully ${data}`)
+        console.log(`info >> get user list successfully`)
         return data
     } catch (error) {
         console.log(error)

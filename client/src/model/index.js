@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import getAllMocServer from "../mocServer/BD";
 import { getAllUsers, deleteUser, getIpInfo } from '../service/base_service';
 import IpInfo from "./ipInfo";
 // import IpInfo from "./ipInfo";

@@ -5,7 +5,7 @@ dotenv.config()
 
 export const db = new Sequelize(
     process.env.DB,
-    'root',
+    'freedb_Evyatar',
     process.env.PASSWORD,
     {
         host: process.env.HOST,
