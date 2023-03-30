@@ -15,12 +15,15 @@ To get started, clone this repository to your local machine using the following 
 Once you have cloned the repository, navigate to the project directory
 and open two terminals, one on the server side and one on the client side. and run the following commands to install the required dependencies:
 
-Delete the "example" extension in the env files
+Delete the "example" extension in the env files.
 
 server-side terminal:
 ```bash
 >> cd server
 >> npm install
+
+>> npm i sequelize
+>> npm i mysql2
 ```
 
 To run the server-side, run the following command:
@@ -33,6 +36,8 @@ client-side terminal:
 ```bash
 >> cd client
 >> npm install
+
+>> npm i axios
 ```
 
 To run the client-side, run the following command:

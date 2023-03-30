@@ -1,11 +1,14 @@
 import axios from 'axios';
 
-const HTTP = `http://127.0.0.1:5000/api/v1/users`
+const HTTP = `http://`
+const LOCALHOST = `127.0.0.1`
+const API = `/api/v1/users`
+const PORT = 5000
 
 
 export const getAllUsers = async () => {
     try {
-        const response = await axios.get(HTTP)
+        const response = await axios.get(`${HTTP}${LOCALHOST}:${PORT}${API}`)
         const data = await response.data
         console.log(`info >> get user list successfully`)
         return data
@@ -17,7 +20,7 @@ export const getAllUsers = async () => {
 
 export const deleteUser = async (id) => {
     try {
-        const respons = await axios.delete(`${HTTP}/${id}`)
+        const respons = await axios.delete(`${HTTP}${LOCALHOST}:${PORT}${API}/${id}`)
         console.log(`info >> delete user successfully ${respons.data.message}`)
         return respons.data.message
     } catch (error) {
@@ -27,7 +30,7 @@ export const deleteUser = async (id) => {
 
 export const addUser = async (user) => {
     try {
-        const respons = await axios.post(HTTP, user)
+        const respons = await axios.post(`${HTTP}${LOCALHOST}:${PORT}${API}`, user)
         console.log(`info >> add user successfully ${respons.data}`)
         return respons
     } catch (error) {

@@ -1,6 +1,5 @@
-import './App.css';
+import './styles/App.css';
 import Index from './model/index'
-import AddUserForm from './model/add';
 
 const App = () => {
   return (
