@@ -31,7 +31,7 @@ To run the server-side, run the following command:
 
 client-side terminal:
 ```bash
->> cd server
+>> cd client
 >> npm install
 ```
 
