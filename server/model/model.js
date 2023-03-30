@@ -7,7 +7,6 @@ export const postDataUsers = (req, res) => {
     let validIP = validateIPAddress(req.body.ip)
     let validPhone = validatePhoneNumber(req.body.phone)
 
-    console.log(validName, validID, validIP, validPhone)
 
     if (validName !== true) {
         res.send(validName)
@@ -27,7 +26,7 @@ export const postDataUsers = (req, res) => {
             res.send(data);
         })
         .catch((error) => {
-            console.log(error);
+            console.error(error);
         });
     }
     
@@ -39,7 +38,7 @@ export const getAllUsers = (req, res) => {
             res.send(data);
         })
         .catch((error) => {
-            console.log(error);
+            console.error(error);
             res.send(error);
         });
 }
@@ -53,6 +52,6 @@ export const deleteByIdUsers = (req, res) => {
             })
         })
         .catch((error) => {
-            console.log(error);
+            console.error(error);
         });
 }

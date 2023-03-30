@@ -32,8 +32,6 @@ const AddUserForm = (props) => {
         let validIP = validateIPAddress(ip)
         let validPhone = validatePhoneNumber(phone)
 
-        console.log(validName, validID, validIP, validPhone)
-
         if (validName !== true) {
             setErrorValid(validName)
         }
@@ -53,7 +51,6 @@ const AddUserForm = (props) => {
 
             const newUser = (async (user) => {
                 const response = await addUser(user)
-                console.log(response)
                 props.addUser(user)
                 props.setAdd(false)
             })

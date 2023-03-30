@@ -9,7 +9,6 @@ export const deleteById = (id) => {
 }
 
 export const create = (user) => {
-    console.log('user', user)
     let newUser = new type(user);
     return newUser.save();
 }

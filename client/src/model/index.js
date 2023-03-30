@@ -46,8 +46,6 @@ const Index = () => {
             const response = await getIpInfo(ipAddress)
             setDataIP(response);
             setIsReadyIp(true);
-            console.log(response)
-            console.log(dataIP)
             return response
         })
         ipData(ipAddress)
