@@ -85,7 +85,6 @@ const AddUserForm = (props) => {
                 else {
                     setterErrors(`Entar an ${key}`);
                 }
-                console.log(key + ': ' + value);
                 const setter = setterValid[key];
                 setter(!value);
             });
