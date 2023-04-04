@@ -1,12 +1,12 @@
 export const validateName = (input_str) => {
   const re = /^[a-zA-Z]+(([',. -][a-zA-Z])?[a-zA-Z]*)*$/;
-  return re.test(input_str) ? true : `${input_str} is invalid Name`;
+  return re.test(input_str)
 };
 
 
 export const isValidIsraeliID = (idNumber) => {
   let id = String(idNumber).trim();
-  if (id.length > 9 || id.length < 5 || isNaN(id)) return `${idNumber} is invalid id`;
+  if (id.length > 9 || id.length < 5 || isNaN(id)) return false;
 
   // Pad string with zeros up to 9 digits
   id = id.length < 9 ? ("00000000" + id).slice(-9) : id;
@@ -18,19 +18,19 @@ export const isValidIsraeliID = (idNumber) => {
     }) %
       10 ===
     0
-  ) ? true : `${idNumber} is invalid id`;
+  );
 };
 
 
 export const validateIPAddress = (ip) => {
   const ipv4Regex = /^(\d{1,3}\.){3}\d{1,3}$/;
   const ipv6Regex = /^([0-9A-Fa-f]{1,4}:){7}[0-9A-Fa-f]{1,4}$/;
-  return ipv4Regex.test(ip) || ipv6Regex.test(ip) ? true : `${ip} is invalid ip`;
+  return ipv4Regex.test(ip) || ipv6Regex.test(ip);
 };
 
 
 export const validatePhoneNumber = (phoneNumber) => {
   const re = /^(?:\+972|972|0)(?:-)?(?:[23489]|5[023458]|77|81)(?:-)?(?:\d{7})$/;
-  return re.test(phoneNumber) ? true : `${phoneNumber} is invalid phone number`;
+  return re.test(phoneNumber);
 };
 

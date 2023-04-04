@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {isValidIsraeliID, validatePhoneNumber, validateName, validateIPAddress} from './validator'
+import { isValidIsraeliID, validatePhoneNumber, validateName, validateIPAddress } from './validator'
 import { addUser } from '../service/base_service.js';
 
 
@@ -11,49 +11,55 @@ const AddUserForm = (props) => {
     const [phone, setPhone] = useState('');
     const [errorValid, setErrorValid] = useState('')
 
- 
+
     const handleChange = (event) => {
         const setterMap = {
-          name: setName,
-          id: setId,
-          ip: setIP,
-          phone: setPhone,
+            name: setName,
+            id: setId,
+            ip: setIP,
+            phone: setPhone,
         };
         const { name, value } = event.target;
         const setter = setterMap[name];
         setter(value);
-      };
-      
+    };
+
 
     const onSubmit = () => {
-        let validName = validateName(name)
-        let validID = isValidIsraeliID(id)
-        let validIP = validateIPAddress(ip)
-        let validPhone = validatePhoneNumber(phone)
+        const validMap = {
+            name: validateName(name),
+            id: isValidIsraeliID(id),
+            ip: validateIPAddress(ip),
+            phone: validatePhoneNumber(phone),
+        };
 
-        if (validName !== true) {
-            setErrorValid(validName)
-        }
-        else if (validID !== true) {
-            setErrorValid(validID)
-        }
-        else if (validIP !== true) {
-            setErrorValid(validIP)
-        }
-        else if (validPhone !== true) {
-            setErrorValid(validPhone)
-        }
-        else {
-            let user = {
-                'name': name, 'id': id, 'ip': ip, 'phone': phone
-            }
+        const setterMap = {
+            name: name,
+            id: id,
+            ip: ip,
+            phone: phone,
+        };
+        
+        const falseKeys = Object.entries(validMap)
+            .filter(([key, value]) => value !== true)
+            .map(([key, value]) => key);
+            
 
+        if (falseKeys.length === 0) {
             const newUser = (async (user) => {
                 await addUser(user)
                 props.addUser(user)
                 props.setAdd(false)
             })
-            newUser(user)
+            newUser(setterMap)
+        }
+        else {
+            if (setterMap[falseKeys[0]].length > 0) {
+                setErrorValid(`${setterMap[falseKeys[0]]} is invalid ${falseKeys[0]}`) 
+            }
+            else {
+                setErrorValid(`The ${falseKeys[0]} field must be full`) 
+            }
         }
     }
 
