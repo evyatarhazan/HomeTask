@@ -9,7 +9,16 @@ const AddUserForm = (props) => {
     const [id, setId] = useState('');
     const [ip, setIP] = useState('');
     const [phone, setPhone] = useState('');
-    const [errorValid, setErrorValid] = useState('')
+
+    const [isValidName, setIsValidName] = useState(false);
+    const [isValidId, setIsValidId] = useState(false);
+    const [isValidIp, setIsValidIP] = useState(false);
+    const [isValidPhone, setIsValidPhone] = useState(false);
+
+    const [errorValidName, setErrorValidName] = useState('')
+    const [errorValidId, setErrorValidId] = useState('')
+    const [errorValidIp, setErrorValIp] = useState('')
+    const [errorValidPhone, setErrorValidPhone] = useState('')
 
 
     const handleChange = (event) => {
@@ -39,11 +48,25 @@ const AddUserForm = (props) => {
             ip: ip,
             phone: phone,
         };
-        
+
+        const setterError = {
+            name: setErrorValidName,
+            id: setErrorValidId,
+            ip: setErrorValIp,
+            phone: setErrorValidPhone,
+        };
+
+        const setterValid = {
+            name: setIsValidName,
+            id: setIsValidId,
+            ip: setIsValidIP,
+            phone: setIsValidPhone,
+        };
+
         const falseKeys = Object.entries(validMap)
             .filter(([key, value]) => value !== true)
             .map(([key, value]) => key);
-            
+
 
         if (falseKeys.length === 0) {
             const newUser = (async (user) => {
@@ -54,12 +77,19 @@ const AddUserForm = (props) => {
             newUser(setterMap)
         }
         else {
-            if (setterMap[falseKeys[0]].length > 0) {
-                setErrorValid(`${setterMap[falseKeys[0]]} is invalid ${falseKeys[0]}`) 
-            }
-            else {
-                setErrorValid(`The ${falseKeys[0]} field must be full`) 
-            }
+            Object.entries(validMap).forEach(([key, value]) => {
+                const setterErrors = setterError[key];
+                if (setterMap[key].length > 0) {
+                    setterErrors(`${setterMap[key]} is invalid ${key}`);
+                }
+                else {
+                    setterErrors(`Entar an ${key}`);
+                }
+                console.log(key + ': ' + value);
+                const setter = setterValid[key];
+                setter(!value);
+            });
+
         }
     }
 
@@ -75,9 +105,11 @@ const AddUserForm = (props) => {
                                 type="text"
                                 id="name"
                                 name="name"
+                                placeholder="Enter name"
                                 onChange={handleChange}
                                 value={name}
                             />
+                            {isValidName && <div className="warning">{errorValidName}</div>}
                         </td>
                     </tr>
                     <tr>
@@ -87,9 +119,11 @@ const AddUserForm = (props) => {
                                 type="number"
                                 id="id"
                                 name="id"
+                                placeholder="Enter id"
                                 onChange={handleChange}
                                 value={id}
                             />
+                            {isValidId && <div className="warning">{errorValidId}</div>}
                         </td>
                     </tr>
                     <tr>
@@ -99,9 +133,11 @@ const AddUserForm = (props) => {
                                 type="text"
                                 id="ip"
                                 name="ip"
+                                placeholder="Enter ip"
                                 onChange={handleChange}
                                 value={ip}
                             />
+                            {isValidIp && <div className="warning">{errorValidIp}</div>}
                         </td>
                     </tr>
                     <tr>
@@ -111,13 +147,14 @@ const AddUserForm = (props) => {
                                 type="text"
                                 id="phone"
                                 name="phone"
+                                placeholder="Enter phone"
                                 onChange={handleChange}
                                 value={phone}
                             />
+                            {isValidPhone && <div className="warning">{errorValidPhone}</div>}
                         </td>
                     </tr>
                 </table>
-                <h2>{errorValid}</h2>
                 <div>
                     <div className="icons">
                         <button className="close" onClick={() => onSubmit()}>Add</button>
