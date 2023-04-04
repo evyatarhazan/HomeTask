@@ -11,20 +11,19 @@ const AddUserForm = (props) => {
     const [phone, setPhone] = useState('');
     const [errorValid, setErrorValid] = useState('')
 
+ 
     const handleChange = (event) => {
-        if (event.target.name === "name") {
-            setName(event.target.value);
-        }
-        if (event.target.name === "id") {
-            setId(event.target.value);
-        }
-        if (event.target.name === "ip") {
-            setIP(event.target.value);
-        }
-        if (event.target.name === "phone") {
-            setPhone(event.target.value);
-        }
-    };
+        const setterMap = {
+          name: setName,
+          id: setId,
+          ip: setIP,
+          phone: setPhone,
+        };
+        const { name, value } = event.target;
+        const setter = setterMap[name];
+        setter(value);
+      };
+      
 
     const onSubmit = () => {
         let validName = validateName(name)

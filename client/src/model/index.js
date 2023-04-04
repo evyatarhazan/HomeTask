@@ -3,6 +3,7 @@ import { getAllUsers, deleteUser, getIpInfo } from '../service/base_service';
 import IpInfo from "./ipInfo";
 import Modal from './modal';
 import Navbar from "./navbar";
+import TableUsers from "./tableUsers";
 
 
 const Index = () => {
@@ -39,6 +40,7 @@ const Index = () => {
         setUsers(users)
     }
 
+
     useEffect(() => {
         const ipData = (async (ipAddress) => {
             const response = await getIpInfo(ipAddress)
@@ -65,34 +67,7 @@ const Index = () => {
     return (
         <div>
             <Navbar addUser={addUser} data={data} filterUsers={filterUsers} />
-            <table style={{ tableLayout: "auto" }}>
-                <tr>
-                    <th>Name</th>
-                    <th>ID</th>
-                    <th>IP</th>
-                    <th>Phone</th>
-                    <th>Action</th>
-                </tr>
-                {isReady &&
-                    users.map((user, i) => {
-                        return (
-                            <tr key={i}>
-                                <td>{user.name}</td>
-                                <td>{user.id}</td>
-                                <td className="miniNavbarButton" onClick={() => [setIpAddress(user.ip), setShowIpInfo(true)]}>
-                                    {user.ip}
-                                </td>
-                                <td>{user.phone}</td>
-                                <td>
-                                    <button onClick={() => modalDelete(user)}>
-                                        <img src="https://img.icons8.com/material/30/ab5e2a/filled-trash.png" alt=""/>
-                                    </button>
-                                </td>
-                            </tr>
-                        )
-                    })
-                }
-            </table>
+            <TableUsers show={isReady} users={users} setIpAddress={setIpAddress} setShowIpInfo={setShowIpInfo} modalDelete={modalDelete}/>
             <Modal show={showDelete}>
                 <div id="MenusDelete" className="Rmodal">
                     <div className="modal-content">
@@ -105,7 +80,7 @@ const Index = () => {
                 </div>
             </Modal>
             <Modal show={showIpInfo}>
-                <IpInfo isReadyIp={isReadyIp} dataIP={dataIP} setShowIpInfo={setShowIpInfo}/>
+                <IpInfo isReadyIp={isReadyIp} dataIP={dataIP} setShowIpInfo={setShowIpInfo} />
             </Modal>
         </div>
     )
