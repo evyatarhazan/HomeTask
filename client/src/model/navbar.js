@@ -8,10 +8,31 @@ const Navbar = (props) => {
     const [Add, setAdd] = useState(false);
     const [searchTerm, setSearchTerm] = useState('')
     const [filter, setFilter] = useState('name')
-    const [errorSearch, setErrorSearch] = useState('')
+    const [isExist, setIsExist] = useState(false)
+
 
     const handleChange = (event) => {
         setFilter(event.target.value)
+        const attributes = {
+            data: props.data,
+            filterUsers: props.filterUsers,
+            searchTerm: searchTerm,
+            filter: event.target.value,
+            setIsExist: setIsExist,
+        }
+        Search(attributes)
+    }
+
+    const setSearch = (event) => {
+        setSearchTerm(event.target.value)
+        const attributes = {
+            data: props.data,
+            filterUsers: props.filterUsers,
+            searchTerm: event.target.value,
+            filter: filter,
+            setIsExist: setIsExist,
+        }
+        Search(attributes)
     }
 
     return (
@@ -30,18 +51,16 @@ const Navbar = (props) => {
                         <input
                             type="text"
                             value={searchTerm}
-                            onChange={(e) => setSearchTerm(e.target.value)}
-                        // onChange={(e) => [setSearchTerm(e.target.value), Search(props.data, props.filterUsers, searchTerm, filter, setErrorSearch)]}
+                            onChange={(event) => setSearch(event)}
+                            placeholder="Search"
                         />
-                        <button onClick={() => Search(props.data, props.filterUsers, searchTerm, filter, setErrorSearch)}>
-                            <img src="https://img.icons8.com/15/ab5e2a/search" alt=""/>
-                        </button>
-                        {errorSearch}
+                        {isExist && <div className="warning">No value matched your search</div>}
                     </div>
                     <button onClick={() => setAdd(true)}>
                     <img src="https://img.icons8.com/ios-filled/25/ab5e2a/add-user-male.png" alt=""/>
                     </button>
                 </div>
+
             </div>
             <Modal show={Add}>
                 <div id="MenusAdd" className="Rmodal">

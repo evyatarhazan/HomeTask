@@ -1,16 +1,16 @@
-const Search = (data, filterUsers, search, filterCategory, setErrorSearch) => {
-    if (search === '') {
-        filterUsers(data)
+const Search = (props) => {
+    if (props.searchTerm === '') {
+        props.filterUsers(props.data)
     }
     else {
-        let newData = data.filter(user => String(user[filterCategory]).includes(String(search)))
+        const newData = props.data.filter(user => String(user[props.filter]).includes(String(props.searchTerm)))
         if (newData.length === 0) {
-            filterUsers(data)
-            setErrorSearch('No value matched your search')
+            props.filterUsers(props.data)
+            props.setIsExist(true)
         }
         else {
-            filterUsers(newData)
-            setErrorSearch()
+            props.filterUsers(newData)
+            props.setIsExist(false)
         }
     }
 }

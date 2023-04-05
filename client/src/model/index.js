@@ -23,7 +23,8 @@ const Index = () => {
     const userDelete = (props) => {
         deleteUser(props)
         let newData = users.filter(user => user.id !== props)
-        setUsers(newData);
+        setData(newData)
+        setUsers(data);
         setShowDelete(false)
     }
 
@@ -33,6 +34,7 @@ const Index = () => {
     }
 
     const addUser = (user) => {
+        setData([...users, user])
         setUsers([...users, user])
     }
 
