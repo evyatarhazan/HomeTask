@@ -24,3 +24,25 @@
     justify-content: space-between;
     flex-direction: row-reverse;
   }
+
+  .miniNavbarflex {
+    display: flex;
+    flex-direction: row-reverse;
+    height: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  tdNav {
+    background-color: #e8c79c;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column-reverse;
+  }
+
+  trNav {
+    padding: 8px;
+    font-size: 16px;
+    border: none;
+  }

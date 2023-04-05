@@ -42,25 +42,36 @@ const Navbar = (props) => {
                 </div>
                 <div className="miniNavbarLeft">
                     <div className="miniNavbarButton">
-                        <select className="form-control" aria-label="Default select example" onChange={handleChange} name="category">
-                            <option value="name">Name</option>
-                            <option value="id">ID</option>
-                            <option value="ip">IP</option>
-                            <option value="phone">Phone</option>
-                        </select>
-                        <input
-                            type="text"
-                            value={searchTerm}
-                            onChange={(event) => setSearch(event)}
-                            placeholder="Search"
-                        />
-                        {isExist && <div className="warning">No value matched your search</div>}
+                        <div className="miniNavbarflex">
+                        <trNav>
+                            <tdNav>
+                                <select className="form-control" aria-label="Default select example" onChange={handleChange} name="category">
+                                    <option value="name">Name</option>
+                                    <option value="id">ID</option>
+                                    <option value="ip">IP</option>
+                                    <option value="phone">Phone</option>
+                                </select>
+                            </tdNav>
+                            <tdNav>
+                                <input
+                                    type="text"
+                                    value={searchTerm}
+                                    onChange={(event) => setSearch(event)}
+                                    placeholder="Search"
+                                />
+                            </tdNav>
+                                {isExist && <div className="warning">No value matched your search</div>}
+                        </trNav>
+                        <trNav>
+                            <tdNav>
+                                <button onClick={() => setAdd(true)}>
+                                    <img src="https://img.icons8.com/ios-filled/25/ab5e2a/add-user-male.png" alt="" />
+                                </button>
+                            </tdNav>
+                        </trNav>
+                        </div>
                     </div>
-                    <button onClick={() => setAdd(true)}>
-                    <img src="https://img.icons8.com/ios-filled/25/ab5e2a/add-user-male.png" alt=""/>
-                    </button>
                 </div>
-
             </div>
             <Modal show={Add}>
                 <div id="MenusAdd" className="Rmodal">
