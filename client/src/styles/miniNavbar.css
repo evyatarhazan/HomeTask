@@ -34,14 +34,14 @@
     left: 0;
   }
 
-  tdNav {
+  tdnav {
     background-color: #e8c79c;
     display: flex;
     justify-content: space-around;
     flex-direction: column-reverse;
   }
 
-  trNav {
+  trnav {
     padding: 8px;
     font-size: 16px;
     border: none;

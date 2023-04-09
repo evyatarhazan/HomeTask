@@ -43,32 +43,32 @@ const Navbar = (props) => {
                 <div className="miniNavbarLeft">
                     <div className="miniNavbarButton">
                         <div className="miniNavbarflex">
-                        <trNav>
-                            <tdNav>
+                        <trnav>
+                            <tdnav>
                                 <select className="form-control" aria-label="Default select example" onChange={handleChange} name="category">
                                     <option value="name">Name</option>
                                     <option value="id">ID</option>
                                     <option value="ip">IP</option>
                                     <option value="phone">Phone</option>
                                 </select>
-                            </tdNav>
-                            <tdNav>
+                            </tdnav>
+                            <tdnav>
                                 <input
                                     type="text"
                                     value={searchTerm}
                                     onChange={(event) => setSearch(event)}
                                     placeholder="Search"
                                 />
-                            </tdNav>
+                            </tdnav>
                                 {isExist && <div className="warning">No value matched your search</div>}
-                        </trNav>
-                        <trNav>
-                            <tdNav>
+                        </trnav>
+                        <trnav>
+                            <tdnav>
                                 <button onClick={() => setAdd(true)}>
                                     <img src="https://img.icons8.com/ios-filled/25/ab5e2a/add-user-male.png" alt="" />
                                 </button>
-                            </tdNav>
-                        </trNav>
+                            </tdnav>
+                        </trnav>
                         </div>
                     </div>
                 </div>

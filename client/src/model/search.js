@@ -1,6 +1,7 @@
 const Search = (props) => {
     if (props.searchTerm === '') {
         props.filterUsers(props.data)
+        props.setIsExist(false)
     }
     else {
         const newData = props.data.filter(user => String(user[props.filter]).includes(String(props.searchTerm)))
