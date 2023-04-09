@@ -46,3 +46,36 @@
     font-size: 16px;
     border: none;
   }
+
+  
+  /* Make the navigation bar responsive */
+  @media screen and (max-width: 600px) {
+    .mini {
+      flex-wrap: wrap;
+      height: auto;
+    }
+  
+    .miniNavbarLeft,
+    .miniNavbarRight {
+      width: 100%;
+      justify-content: center;
+      order: 2;
+    }
+  
+    .miniNavbarButton {
+      margin: 5px;
+    }
+  
+    tdnav {
+      display: none;
+      font-size: 12px;
+      padding: 5px;
+    }
+  
+    tdnav input[type="text"] {
+      font-size: 12px;
+      padding: 2px;
+      width: 70%;
+    }
+  }
+  

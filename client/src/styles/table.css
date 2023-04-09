@@ -61,3 +61,60 @@ td {
 #Xclose {
   padding-right: 0%;
 }
+
+/* For small screens, show the table as a block element with auto width */
+@media only screen and (max-width: 600px) {
+  table {
+    display: block;
+    width: auto;
+    margin: 10px;
+    margin-top: 50px;
+  }
+  
+  /* Hide table headers on small screens */
+  .TableHeader {
+    display: none;
+  }
+
+  /* Show table rows as block elements */
+  tr {
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  /* Show table cells as block elements */
+  td, th {
+    display: block;
+    text-align: left;
+    font-size: 16px;
+    border: none;
+  }
+
+  /* Set background color for table cells */
+  td {
+    background-color: #fff;
+  }
+
+  /* Add padding to table cells */
+  td::before {
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    padding-right: 10px;
+  }
+
+  /* Style the Action button for small screens */
+  .ActionButton {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  /* Style the Action container for small screens */
+  .Action {
+    flex-direction: column;
+    align-items: center;
+  }
+  td input[type="text"], td input[type="number"] {
+    width: 100%;
+  }
+}
