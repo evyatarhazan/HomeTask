@@ -37,7 +37,7 @@ const AddUserForm = (props) => {
     const onSubmit = () => {
         const validMap = {
             name: validateName(name),
-            id: isValidIsraeliID(id),
+            id: isValidIsraeliID(id, props.data),
             ip: validateIPAddress(ip),
             phone: validatePhoneNumber(phone),
         };
@@ -67,7 +67,6 @@ const AddUserForm = (props) => {
             .filter(([key, value]) => value !== true)
             .map(([key, value]) => key);
 
-
         if (falseKeys.length === 0) {
             const newUser = (async (user) => {
                 await addUser(user)
@@ -80,7 +79,13 @@ const AddUserForm = (props) => {
             Object.entries(validMap).forEach(([key, value]) => {
                 const setterErrors = setterError[key];
                 if (setterMap[key].length > 0) {
-                    setterErrors(`${setterMap[key]} is invalid ${key}`);
+                    if (typeof(value) === 'string') {
+                        setterErrors(value)
+                        value = false
+                    }
+                    else {
+                        setterErrors(`${setterMap[key]} is invalid ${key}`);
+                    }
                 }
                 else {
                     setterErrors(`Entar an ${key}`);

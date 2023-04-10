@@ -78,7 +78,7 @@ const Navbar = (props) => {
             <Modal show={Add}>
                 <div id="MenusAdd" className="Rmodal">
                     <div className="modal-content">
-                        <AddUserForm setAdd={setAdd} addUser={props.addUser} />
+                        <AddUserForm setAdd={setAdd} addUser={props.addUser} data={props.data} />
                     </div>
                 </div>
             </Modal>

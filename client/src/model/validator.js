@@ -4,7 +4,14 @@ export const validateName = (input_str) => {
 };
 
 
-export const isValidIsraeliID = (idNumber) => {
+export const isValidIsraeliID = (idNumber, allData) => {
+  const ifExsist = Object.values(allData)
+  .flatMap(innerObj => Object.values(innerObj))
+  .filter(val => String(val) === String(idNumber));
+  if (ifExsist.length !== 0){
+    return `${idNumber} already exists`
+  }
+
   let id = String(idNumber).trim();
   if (id.length > 9 || id.length < 5 || isNaN(id)) return false;
 
