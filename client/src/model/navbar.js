@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import AddUserForm from "./add";
 import Modal from "./modal";
 import Search from "./search";
@@ -11,7 +11,7 @@ const Navbar = (props) => {
     const [isExist, setIsExist] = useState(false)
 
 
-    const handleChange = (event) => {
+    const handleSearchChange = useCallback((event) => {
         setFilter(event.target.value)
         const attributes = {
             data: props.data,
@@ -21,9 +21,10 @@ const Navbar = (props) => {
             setIsExist: setIsExist,
         }
         Search(attributes)
-    }
+    }, [props.data, props.filterUsers, searchTerm]);
 
-    const setSearch = (event) => {
+
+    const handleSetSearch = useCallback((event) => {
         setSearchTerm(event.target.value)
         const attributes = {
             data: props.data,
@@ -33,7 +34,8 @@ const Navbar = (props) => {
             setIsExist: setIsExist,
         }
         Search(attributes)
-    }
+    }, [props.data, props.filterUsers, filter]);
+    
 
     return (
         <>
@@ -45,7 +47,7 @@ const Navbar = (props) => {
                         <div className="miniNavbarflex">
                         <trnav>
                             <tdnav>
-                                <select className="form-control" aria-label="Default select example" onChange={handleChange} name="category">
+                                <select className="form-control" aria-label="Default select example" onChange={handleSearchChange} name="category">
                                     <option value="name">Name</option>
                                     <option value="id">ID</option>
                                     <option value="ip">IP</option>
@@ -56,7 +58,7 @@ const Navbar = (props) => {
                                 <input
                                     type="text"
                                     value={searchTerm}
-                                    onChange={(event) => setSearch(event)}
+                                    onChange={(event) => handleSetSearch(event)}
                                     placeholder="Search"
                                 />
                             </tdnav>

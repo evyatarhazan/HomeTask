@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { getAllUsers, deleteUser, getIpInfo } from '../service/base_service';
 import IpInfo from "./ipInfo";
 import Modal from './modal';
@@ -20,27 +20,37 @@ const Index = () => {
     const [dataIP, setDataIP] = useState([])
     const [isReadyIp, setIsReadyIp] = useState(false)
 
-    const userDelete = (props) => {
-        deleteUser(props)
-        let newData = users.filter(user => user.id !== props)
-        setData(newData)
-        setUsers(data);
-        setShowDelete(false)
-    }
 
-    const modalDelete = (user) => {
+    const userDelete = useCallback((props) => {
+        deleteUser(props)
+        const newData = users.filter(user => user.id !== props)
+        const deleteUserRec = (async () => {
+            const response = await deleteUser(props)   
+            console.log(response)
+            setData(newData)
+            setUsers(data);
+            setShowDelete(false)
+        })
+        deleteUserRec()
+    }, [users, data]);
+   
+
+    const modalDelete = useCallback((user) => {
         setUser(user)
         setShowDelete(true)
-    }
+    }, []);
+   
 
-    const addUser = (user) => {
-        setData([...users, user])
-        setUsers([...users, user])
-    }
+    const addUser = useCallback((user) => {
+        setData([...data, user])
+        setUsers([...data, user])
+    }, [data]);
+   
 
-    const filterUsers = (users) => {
+    const filterUsers = useCallback((users) => {
         setUsers(users)
-    }
+    }, []);
+   
 
 
     useEffect(() => {

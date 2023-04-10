@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { isValidIsraeliID, validatePhoneNumber, validateName, validateIPAddress } from './validator'
 import { addUser } from '../service/base_service.js';
 
@@ -21,7 +21,7 @@ const AddUserForm = (props) => {
     const [errorValidPhone, setErrorValidPhone] = useState('')
 
 
-    const handleChange = (event) => {
+    const handleChange = useCallback((event) => {
         const setterMap = {
             name: setName,
             id: setId,
@@ -31,7 +31,7 @@ const AddUserForm = (props) => {
         const { name, value } = event.target;
         const setter = setterMap[name];
         setter(value);
-    };
+    }, []);
 
 
     const onSubmit = () => {
